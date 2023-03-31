@@ -1,0 +1,38 @@
+:root {
+    --pink: #f4ab93;
+    --cream: #fedfad;
+    --brown: #958369;
+}
+
+* {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--pink);
+}
+
+.question {
+    display: block;
+    height: 250px;
+    width: 100%;
+    background-color: var(--pink);
+    color: var(--cream);
+    font-size: 200px;
+    text-align: center;
+}
+
+.choices {
+    display: block;
+    height:400px;
+    width: 100%;
+    background-color: var(--cream);
+    color: var(--brown);
+    font-size: 125px;
+    text-align: center;
+}
+
+button {
+    background-color: var(--cream);
+    color: var(--brown);
+}
