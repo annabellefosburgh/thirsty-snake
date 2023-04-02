@@ -2,13 +2,16 @@
 var questionContainer = document.getElementById('question-container');
 var startButton = document.getElementById('start-button');
 var choicesContainer = document.getElementById('choices-container');
+var timerDisplay = document.getElementById('timer');
 
 //Other needed variables and array for my questions stored here.
 var timer = 60;
+var penaltyTime = 15;
 var userScore = 0;
 var questionIndex = 0;
 
-var yourQuestionArray = [{
+
+var questionArray = [{
     question: 'Commonly used data types do NOT include ___.',
     choices: ['strings', 'booleans', 'alerts', 'numbers'],
     correct: 'alerts'
@@ -37,7 +40,7 @@ function startQuiz() {
 function showQuestion() {
     // replace the text content of your question container and your choices container
     // with the current question's question value and choices value
-    questionContainer.textContent = yourQuestionArray[questionIndex]['question'];
+    questionContainer.textContent = questionArray[questionIndex]['question'];
     for(var i = 0; i < 4; i++ ){
         var btn = document.createElement('button');
         btn.textContent = yourQuestionArray[questionIndex]['choices'][i];
@@ -46,37 +49,60 @@ function showQuestion() {
     }
 }
 
+//Function to grade whether the answer was right or wrong, and add comments accordingly
+function compare(event) {
+    var userChoice = event.target;
+    if (userChoice.matches("correct")) {
+        var createDiv = document.createElement("div");
+        createDiv.setAttribute("id", "createDiv");
+        // Correct condition 
+        if (element.textContent == questionArray[questionIndex].correct) {
+            score++;
+            createDiv.textContent = "Correct!"
+            // Correct condition 
+        } else {
+            // Will apply the 15 second deduction for wrong answers
+            timer = timer - penaltyTime;
+            createDiv.textContent = "Wrong!"
+        }
+    }
+}
+
+//Creating the end screen that show's your score in the event that you answer all before time runs out
+if (yourQuestionArray >= questions.length) {
+    endPage();
+    createDiv.textContent = "End of quiz! Your score is " + userScore;
+}
+
+//The end page will append the main container to close out the quiz
+function endPage(){
+    document.createElement("form")
+}
+
+
 function gradeUserSelection(event) {
     if(event.target.matches('button')) {
         // then you know a button was clicked, great!
 
     }
-}
 
-function getUsernameAndSaveToLocal() {
-    // you might clear the contents of your main container
-    // maybe show/unhide your form/input element
-    // 
 }
 
 function beginTimer() {
     var intervalId = setInterval(function () {
         // check first to see what the current value of timer is before doing anthing
         if(timer <= 0) {
-            // the quiz should end, regardless of what question the user is on
-            // maybe call some function which hides or shows some other container
-            // end your interval function here by calling clearInterval(intervalId);
+           clearInterval(intervalId)
         }
-        // what code do you want to run every 1s?
         timer = timer - 1;
         console.log('timer is now', timer);
-        // you will display the timer value to your document
-        // via some Javascript variable which makes references to your html element
-        // i.e. timerContainer.textContent = 'Time left is ' + timer;
+        timerDisplay.textContent = timer.val
     }, 1000)
 }
+timerDisplay.textContent(timer.val)
+
 
 // add listeners at the very bottom of your JavaScript file
 startButton.addEventListener('click', startQuiz);
 startButton.addEventListener('click', beginTimer);
-choicesContainer.addEvenListener('click', gradeUserSelection)
+choicesContainer.addEventListener('click', gradeUserSelection)

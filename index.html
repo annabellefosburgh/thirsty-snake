@@ -4,19 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Coding Quiz</title>
-    <link rel="stylesheet" src="./assets/style.css">
+    <link rel="stylesheet" href="./assets/style.css">
 </head>
 
 <body>
     <header>
         <h1>Let's Test Your Coding Knowledge!</h1>
+        <p id="timer">Time left: </p>
+        <p id="highscores"></p>
     </header>
     <div class="introduction">
-        <h2>You will have 90 seconds to complete a ten question quiz.</h2>
+        <h2>You will have 60 seconds to complete a four question quiz. If you answer wrong, 15 seconds will be deducted from the clock.</h2>
+        <button id="start-button">Start Quiz</button>
     </div>
 
     <div class="main-container" id="main-container">
-        <div class="question" id="question-container">
+        <div class="question" id="question1-container">
 
         </div>
         <div class="choices" id="choices-container">
@@ -25,7 +28,10 @@
         <button id="next-button">Next</button>
     </div>
 
-    <button id="start-button">Start Quiz</button>
+    <div class="end-page" id="end-page">
+        Thanks for playing!
+    </div>
+
 </body>
 <script src="./assets/script.js"></script>
 </html>
