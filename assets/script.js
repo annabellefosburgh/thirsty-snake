@@ -3,13 +3,17 @@ var questionContainer = document.getElementById('question-container');
 var startButton = document.getElementById('start-button');
 var choicesContainer = document.getElementById('choices-container');
 var timerDisplay = document.getElementById('timer');
-
+var introduction = document.getElementById('introduction')
+var mainContainer = document.getElementById('main-container');
+var endPage = document.getElementById('end-page');
 //Other needed variables and array for my questions stored here.
 var timer = 60;
 var penaltyTime = 15;
 var userScore = 0;
 var questionIndex = 0;
 
+endPage.style.visibility = 'hidden';
+mainContainer.style.visibility = 'hidden';
 
 var questionArray = [{
     question: 'Commonly used data types do NOT include ___.',
@@ -34,6 +38,8 @@ var questionArray = [{
 ]
 
 function startQuiz() {
+    introduction.style.visibility = 'hidden';
+    mainContainer.style.visibility = 'visible';
    beginTimer, showQuestion
 }
 
@@ -69,23 +75,20 @@ function compare(event) {
 }
 
 //Creating the end screen that show's your score in the event that you answer all before time runs out
-if (yourQuestionArray >= questions.length) {
+if (questionArray >= questions.length) {
+    endPage();
+    createDiv.textContent = "End of quiz! Your score is " + userScore;
+}
+
+if (timer === 0) {
     endPage();
     createDiv.textContent = "End of quiz! Your score is " + userScore;
 }
 
 //The end page will append the main container to close out the quiz
 function endPage(){
-    document.createElement("form")
-}
-
-
-function gradeUserSelection(event) {
-    if(event.target.matches('button')) {
-        // then you know a button was clicked, great!
-
-    }
-
+    mainContainer.style.visibility = 'hidden';
+    endPage.style.visibility = 'visible';
 }
 
 function beginTimer() {
@@ -96,10 +99,9 @@ function beginTimer() {
         }
         timer = timer - 1;
         console.log('timer is now', timer);
-        timerDisplay.textContent = timer.val
     }, 1000)
 }
-timerDisplay.textContent(timer.val)
+timerDisplay.textContent = timer
 
 
 // add listeners at the very bottom of your JavaScript file

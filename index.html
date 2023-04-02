@@ -13,7 +13,7 @@
         <p id="timer">Time left: </p>
         <p id="highscores"></p>
     </header>
-    <div class="introduction">
+    <div class="introduction" id="introduction">
         <h2>You will have 60 seconds to complete a four question quiz. If you answer wrong, 15 seconds will be deducted from the clock.</h2>
         <button id="start-button">Start Quiz</button>
     </div>
@@ -28,9 +28,12 @@
         <button id="next-button">Next</button>
     </div>
 
-    <div class="end-page" id="end-page">
-        Thanks for playing!
-    </div>
+    <form class="end-page" id="end-page">
+        <h1>Thanks for playing!</h1>
+        <label for="initials">Enter your initials here. </label> <br>
+        <input type="text"> <br>
+        <input type="submit">
+    </form>
 
 </body>
 <script src="./assets/script.js"></script>
